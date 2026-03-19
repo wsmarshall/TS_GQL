@@ -1,4 +1,4 @@
-import 'graphql-import-node'
+import "graphql-import-node";
 import { execute, parse } from "graphql";
 import { schema } from "./schema.ts";
 
