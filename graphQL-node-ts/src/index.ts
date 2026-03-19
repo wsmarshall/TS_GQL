@@ -1,6 +1,6 @@
 import 'graphql-import-node'
 import { execute, parse } from "graphql";
-import { schema } from "./schema";
+import { schema } from "./schema.ts";
 
 async function main() {
     const myQuery = parse(`query { info }`);

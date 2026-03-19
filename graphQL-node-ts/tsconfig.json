@@ -41,5 +41,7 @@
     "moduleDetection": "auto",
     "skipLibCheck": true,
     "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "emitDeclarationOnly": true,
   }
 }
