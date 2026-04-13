@@ -1,5 +1,7 @@
 import 'graphql-import-node';
 import fastify from "fastify";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { getGraphQLParameters, processRequest, Request, renderGraphiQL, shouldRenderGraphiQL, sendResult } from "graphql-helix";
 import { schema } from "./schema";
 
