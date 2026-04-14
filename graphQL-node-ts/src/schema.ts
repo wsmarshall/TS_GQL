@@ -1,17 +1,6 @@
 import { makeExecutableSchema } from "@graphql-tools/schema";
 import typeDefs from "./schema.graphql";
 
-type Link = {
-  id: string;
-  url: string;
-  description: string;
-}
-
-const links: Link[] = [{
-  id: 'link-0',
-  url: 'www.old.shmeddit.com',
-  description: 'The Back Page of the Internet'
-}]
 
 const resolvers = {
   Query: {
