@@ -17,10 +17,12 @@ const resolvers = {
   url: (parent: Link) => parent.url,
   },
   Mutation: {
-    post: (parent: unknown, args: { description: string, url: string},
+    post: async (
+      parent: unknown, 
+      args: { description: string, url: string},
       context: GraphQLContext
     ) => {
-      const newLink = context.prisma.link.create({
+      const newLink = await context.prisma.link.create({
         data: {
           url: args.url,
           description: args.description,
