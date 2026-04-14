@@ -1,5 +1,6 @@
 import 'graphql-import-node';
 import fastify from "fastify";
+import { contextFactory } from "./context";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { getGraphQLParameters, processRequest, Request, renderGraphiQL, shouldRenderGraphiQL, sendResult } from "graphql-helix";
@@ -36,6 +37,7 @@ async function main() {
         request,
         schema,
         operationName,
+        contextFactory,
         query,
         variables,
       });
