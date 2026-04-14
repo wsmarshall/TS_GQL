@@ -1,11 +1,15 @@
 import { makeExecutableSchema } from "@graphql-tools/schema";
+import { GraphQLContext } from "./context";
 import typeDefs from "./schema.graphql";
+import { Link } from "../prisma/generated/prisma/client.ts";
 
 
 const resolvers = {
   Query: {
     info: () => 'This is the API for Shmeddit',
-    feed: () => links,
+    feed: () => async (parent: unknown, args: {}, context: GraphQLContext) => {
+      return context.prisma.link.findMany();
+    }
   },
   Link: {
   id: (parent: Link) => parent.id,
@@ -13,18 +17,16 @@ const resolvers = {
   url: (parent: Link) => parent.url,
   },
   Mutation: {
-    post: (parent: unknown, args: { description: string, url: string}) => {
-      let idCount = links.length;
-
-      const link: Link = {
-        id: `link-${idCount++}`,
-        description: args.description,
-        url: args.url,
-      };
-
-      links.push(link);
-
-      return link;
+    post: (parent: unknown, args: { description: string, url: string},
+      context: GraphQLContext
+    ) => {
+      const newLink = context.prisma.link.create({
+        data: {
+          url: args.url,
+          description: args.description,
+        },
+      });
+      return newLink;
     },
   },
 };
