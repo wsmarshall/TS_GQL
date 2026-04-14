@@ -8,5 +8,5 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/Link'
-export type * from './commonInputTypes'
+export type * from './models/Link.ts'
+export type * from './commonInputTypes.ts'
