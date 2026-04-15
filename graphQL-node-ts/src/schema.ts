@@ -5,6 +5,7 @@ import { Link } from "../prisma/generated/prisma/client.ts";
 import { APP_SECRET } from "./auth";
 import { hash } from "bcryptjs";
 import { sign } from "jsonwebtoken";
+import { PubSubChannels } from "./pubsub";
 
 
 const resolvers = {
@@ -90,6 +91,8 @@ const resolvers = {
           postedBy: { connect: { id: context.currentUser.id } },
         },
       });
+      
+      context.pubSub.publish("newLink", { createdLink: newLink });
 
       return newLink;
     },
@@ -97,6 +100,16 @@ const resolvers = {
   User: {
     links: (parent: User, args: {}, context: GraphQLContext) =>
       context.prisma.user.findUnique({ where: { id: parent.id } }).links(),
+  },
+  Subscription: {
+    newLink: {
+      subscribe: (parent: unknown, args: {}, context: GraphQLContext) => {
+        return context.pubSub.asyncIterator("newLink");
+      },
+      resolve: (payload: PubSubChannels["newLink"][0]) => {
+        return payload.createdLink;
+      },
+    },
   },
 };
 
