@@ -13,6 +13,8 @@
   "type": "module",
   "devDependencies": {
     "@prisma/client": "^7.7.0",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^25.6.0",
     "prisma": "^7.7.0",
     "ts-node": "^10.9.2",
@@ -22,10 +24,14 @@
   "dependencies": {
     "@graphql-tools/schema": "^10.0.31",
     "@prisma/adapter-better-sqlite3": "^7.7.0",
+    "bcryptjs": "^3.0.3",
     "better-sqlite3": "^12.9.0",
     "fastify": "^5.8.2",
     "graphql": "^16.13.1",
     "graphql-helix": "^1.13.0",
-    "graphql-import-node": "^0.0.5"
+    "graphql-import-node": "^0.0.5",
+    "graphql-subscriptions": "^3.0.0",
+    "jsonwebtoken": "^9.0.3",
+    "typed-graphql-subscriptions": "^0.0.1"
   }
 }
