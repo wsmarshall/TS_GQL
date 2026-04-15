@@ -1,5 +1,5 @@
 import { makeExecutableSchema } from "@graphql-tools/schema";
-import { GraphQLContext } from "./context";
+import { GraphQLContext } from "./context.ts";
 import typeDefs from "./schema.graphql";
 import { Link } from "../prisma/generated/prisma/client.ts";
 

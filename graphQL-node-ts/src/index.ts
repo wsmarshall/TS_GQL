@@ -1,10 +1,10 @@
 import 'graphql-import-node';
 import fastify from "fastify";
-import { contextFactory } from "./context";
+import { contextFactory } from "./context.ts";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { getGraphQLParameters, processRequest, Request, renderGraphiQL, shouldRenderGraphiQL, sendResult } from "graphql-helix";
-import { schema } from "./schema";
+import { schema } from "./schema.ts";
 
 async function main() {
   const server = fastify();
